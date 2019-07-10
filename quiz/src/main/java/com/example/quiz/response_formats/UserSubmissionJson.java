@@ -13,4 +13,5 @@ public class UserSubmissionJson {
     public User user;
     public List<Question> allQuestions;
     public List<Answer> allAnswers;
+
 }

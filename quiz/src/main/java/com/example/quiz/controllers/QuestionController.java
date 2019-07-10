@@ -29,6 +29,11 @@ public class QuestionController {
     @Autowired
     AnswerRepository answerRepository;
 
+    @GetMapping(value="/questions")
+    public List<Question> displayQuestion() {
+        return questionRepository.findAll();
+    }
+
     @PostMapping(value="/questions")
     public void addQuestion(@RequestBody Question question) {
         questionRepository.save(question);
@@ -38,7 +43,7 @@ public class QuestionController {
     public List<Question> searchQuestion(@RequestParam("descriptions") String descriptions) {
         List<Question> questions = questionRepository.findByDescriptionContaining(descriptions);
 
-        if(questions.size() > 1) {
+        if(questions.size() > 0) {
             return questions;
         } else {
             return questionRepository.findAll();
